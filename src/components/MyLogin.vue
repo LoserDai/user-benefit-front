@@ -96,14 +96,17 @@ export default {
         if (valid) {
           this.$axios
             .post("/api/user/login", {
-              username: this.LoginUser.name,
+              account: this.LoginUser.name,
               password: this.LoginUser.pass
             })
             .then(res => {
-              // “001”代表登录成功，其他的均为失败
-              if (res.data.code === "001") {
+              console.log(res.data);
+              // “0”代表登录成功，其他的均为失败
+              if (res.data.code === "200") {
                 // 隐藏登录组件
+                console.log(this.isLogin + "1-----------------");
                 this.isLogin = false;
+                console.log(this.isLogin + "-----------------");
                 // 登录信息存到本地
                 // let user = JSON.stringify(res.data.data);
                 // localStorage.setItem("user", user);

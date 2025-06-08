@@ -8,10 +8,11 @@
 module.exports = {
   publicPath: './',
   devServer: {
+    port: 8081, // 将前端端口改为 8081
     open: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:3000/', // 本地后端地址
+        target: 'http://localhost:8080/', // 本地后端地址
         changeOrigin: true, //允许跨域
         pathRewrite: {
           '^/api': ''
