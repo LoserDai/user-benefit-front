@@ -1,9 +1,9 @@
 <!--
- * @Description: 关于我们页面组件，未完成
- * @Author: hai-27
- * @Date: 2020-02-07 16:23:00
- * @LastEditors: hai-27
- * @LastEditTime: 2020-03-12 19:36:46
+ * @Description: 关于我们页面组件
+ * @Author: Allen
+ * @Date: 2025-02-07 16:23:00
+ * @LastEditors: Allen
+ * @LastEditTime: 2025-03-12 19:36:46
  -->
 <template>
   <div class="about" id="about" name="about">

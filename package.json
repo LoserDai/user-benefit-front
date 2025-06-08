@@ -1,5 +1,5 @@
 {
-  "name": "xiaomi-vue-store",
+  "name": "user-benefit-front",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -28,3 +28,5 @@
     "vue-template-compiler": "^2.6.10"
   }
 }
+
+

@@ -1,9 +1,9 @@
 <!--
  * @Description: 确认订单页面组件
- * @Author: hai-27
- * @Date: 2020-02-23 23:46:39
- * @LastEditors: hai-27
- * @LastEditTime: 2020-02-27 13:35:06
+ * @Author: Allen
+ * @Date: 2025-02-23 23:46:39
+ * @LastEditors: Allen
+ * @LastEditTime: 2025-02-27 13:35:06
  -->
 <template>
   <div class="confirmOrder">

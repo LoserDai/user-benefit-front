@@ -1,9 +1,9 @@
 /*
  * @Description: 路由配置
- * @Author: hai-27
- * @Date: 2020-02-07 16:23:00
- * @LastEditors: hai-27
- * @LastEditTime: 2020-02-27 13:58:48
+ * @Author: Allen
+ * @Date: 2025-02-07 16:23:00
+ * @LastEditors: Allen
+ * @LastEditTime: 2025-02-27 13:58:48
  */
 import Vue from 'vue'
 import Router from 'vue-router'

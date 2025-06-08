@@ -1,9 +1,9 @@
 <!--
  * @Description: 我的订单页面组件
- * @Author: hai-27
- * @Date: 2020-02-20 17:21:54
- * @LastEditors: hai-27
- * @LastEditTime: 2020-02-27 13:36:27
+ * @Author: Allen
+ * @Date: 2025-02-20 17:21:54
+ * @LastEditors: Allen
+ * @LastEditTime: 2025-02-27 13:36:27
  -->
 <template>
   <div class="order">

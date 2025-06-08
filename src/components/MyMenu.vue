@@ -1,9 +1,9 @@
 <!--
  * @Description: 菜单组件，用于首页商品展示模块的右上角菜单
- * @Author: hai-27
- * @Date: 2020-02-07 16:23:00
- * @LastEditors: hai-27
- * @LastEditTime: 2020-02-26 22:52:35
+ * @Author: Allen
+ * @Date: 2025-02-07 16:23:00
+ * @LastEditors: Allen
+ * @LastEditTime: 2025-02-26 22:52:35
  -->
 <template>
   <div class="myMenu" id="myMenu">

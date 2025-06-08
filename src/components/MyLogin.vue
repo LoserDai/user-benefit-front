@@ -1,9 +1,9 @@
 <!--
  * @Description: 登录组件
- * @Author: hai-27
- * @Date: 2020-02-19 20:55:17
- * @LastEditors: hai-27
- * @LastEditTime: 2020-03-01 15:34:08
+ * @Author: Allen
+ * @Date: 2025-02-19 20:55:17
+ * @LastEditors: Allen
+ * @LastEditTime: 2025-03-01 15:34:08
  -->
 <template>
   <div id="myLogin">

@@ -1,9 +1,9 @@
 <!--
  * @Description: 用户注册组件
- * @Author: hai-27
- * @Date: 2020-02-19 22:20:35
- * @LastEditors: hai-27
- * @LastEditTime: 2020-03-01 15:34:34
+ * @Author: Allen
+ * @Date: 2025-02-19 22:20:35
+ * @LastEditors: Allen
+ * @LastEditTime: 2025-03-01 15:34:34
  -->
 <template>
   <div id="register">

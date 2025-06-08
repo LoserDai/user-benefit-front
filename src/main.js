@@ -1,9 +1,9 @@
 /*
  * 入口文件
- * @Author: hai-27
- * @Date: 2020-02-07 16:23:00
- * @LastEditors: hai-27
- * @LastEditTime: 2020-03-04 23:38:41
+ * @Author: Allen
+ * @Date: 2025-02-07 16:23:00
+ * @LastEditors: Allen
+ * @LastEditTime: 2025-03-04 23:38:41
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -83,7 +83,7 @@ router.beforeResolve((to, from, next) => {
 });
 
 // 相对时间过滤器,把时间戳转换成时间
-// 格式: 2020-02-25 21:43:23
+// 格式: 2025-02-25 21:43:23
 Vue.filter('dateFormat', (dataStr) => {
   var time = new Date(dataStr);
   function timeAdd0 (str) {
