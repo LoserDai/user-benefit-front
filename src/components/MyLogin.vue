@@ -38,13 +38,13 @@ export default {
       if (!value) {
         return callback(new Error("请输入用户名"));
       }
-      // 用户名以字母开头,长度在5-16之间,允许字母数字下划线
-      const userNameRule = /^[a-zA-Z][a-zA-Z0-9_]{4,15}$/;
+      // 用户名以字母开头,长度在5-16之间,只能包含字母和数字
+      const userNameRule = /^[a-zA-Z][a-zA-Z0-9]{4,15}$/;
       if (userNameRule.test(value)) {
         this.$refs.ruleForm.validateField("checkPass");
         return callback();
       } else {
-        return callback(new Error("字母开头,长度5-16之间,允许字母数字下划线"));
+        return callback(new Error("字母开头,长度5-16之间,只能包含字母和数字"));
       }
     };
     // 密码的校验方法
@@ -52,14 +52,14 @@ export default {
       if (value === "") {
         return callback(new Error("请输入密码"));
       }
-      // 密码以字母开头,长度在6-18之间,允许字母数字和下划线
-      const passwordRule = /^[a-zA-Z]\w{5,17}$/;
+      // 密码以字母开头,长度在8-18之间,允许字母数字和下划线
+      const passwordRule = /^[a-zA-Z]\w{7,17}$/;
       if (passwordRule.test(value)) {
         this.$refs.ruleForm.validateField("checkPass");
         return callback();
       } else {
         return callback(
-          new Error("字母开头,长度6-18之间,允许字母数字和下划线")
+          new Error("字母开头,长度8-18之间,不允许字母数字和下划线")
         );
       }
     };
@@ -88,48 +88,36 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["setUser", "setShowLogin"]),
-    Login() {
-      // 通过element自定义表单校验规则，校验用户输入的用户信息
-      this.$refs["ruleForm"].validate(valid => {
-        //如果通过校验开始登录
-        if (valid) {
-          this.$axios
-            .post("/api/user/login", {
-              account: this.LoginUser.name,
-              password: this.LoginUser.pass
-            })
-            .then(res => {
-              console.log(res.data);
-              // “0”代表登录成功，其他的均为失败
-              if (res.data.code === "200") {
-                // 隐藏登录组件
-                console.log(this.isLogin + "1-----------------");
-                this.isLogin = false;
-                console.log(this.isLogin + "-----------------");
-                // 登录信息存到本地
-                // let user = JSON.stringify(res.data.data);
-                // localStorage.setItem("user", user);
-                // 登录信息存到vuex
-                this.setUser(res.data.data);
-                // 弹出通知框提示登录成功信息
-                this.notifySucceed(res.data.msg);
-              } else {
-                // 清空输入框的校验状态
-                this.$refs["ruleForm"].resetFields();
-                // 弹出通知框提示登录失败信息
-                this.notifyError(res.data.msg);
-              }
-            })
-            .catch(err => {
-              return Promise.reject(err);
-            });
-        } else {
-          return false;
-        }
-      });
+  ...mapActions(["setUser", "setShowLogin"]),
+  async Login() {
+  try {
+    const valid = await this.$refs["ruleForm"].validate();
+    if (!valid) return;
+
+    const res = await this.$axios.post("/api/user/login", {
+      account: this.LoginUser.name,
+      password: this.LoginUser.pass
+    });
+
+    if (res.data.code === 200 || res.data.code === "200") {
+      this.handleLoginSuccess(res.data);
+    } else {
+      this.handleLoginError(res.data.message); // 用 message 字段
     }
+  } catch (err) {
+    this.handleLoginError("登录请求失败，请稍后重试");
   }
+},
+  handleLoginSuccess(data) {
+  this.setUser(data.data);
+  this.isLogin = false;
+  this.notifySucceed(data.message); // 用 message 字段
+},
+handleLoginError(msg) {
+  this.$refs["ruleForm"].resetFields(); // 只重置密码字段更好
+  this.notifyError(msg);
+}
+}
 };
 </script>
 <style>
