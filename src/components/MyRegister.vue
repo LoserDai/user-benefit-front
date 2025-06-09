@@ -61,7 +61,7 @@ export default {
         //判断数据库中是否已经存在该用户名
         this.$axios
           .post("/api/user/isRegister/", {
-            account: this.RegisterUser.name
+            account: this.RegisterUser.account
           })
           .then(res => {
             // “200”代表用户名不存在，可以注册
@@ -146,9 +146,9 @@ export default {
         if (valid) {
           this.$axios
             .post("/api/user/register", {
-              account: this.RegisterUser.name,
-              password: this.RegisterUser.pass,
-              checkPassword: this.RegisterUser.confirmPass
+              account: this.RegisterUser.account,
+              password: this.RegisterUser.password,
+              checkPassword: this.RegisterUser.checkPassword
             })
             .then(res => {
               // "200"代表注册成功，其他的均为失败
