@@ -15,27 +15,27 @@
         ref="ruleForm"
         class="demo-ruleForm"
       >
-        <el-form-item prop="name">
+        <el-form-item prop="account">
           <el-input
             prefix-icon="el-icon-user-solid"
             placeholder="请输入账号"
-            v-model="RegisterUser.name"
+            v-model="RegisterUser.account"
           ></el-input>
         </el-form-item>
-        <el-form-item prop="pass">
+        <el-form-item prop="password">
           <el-input
             prefix-icon="el-icon-view"
             type="password"
             placeholder="请输入密码"
-            v-model="RegisterUser.pass"
+            v-model="RegisterUser.password"
           ></el-input>
         </el-form-item>
-        <el-form-item prop="confirmPass">
+        <el-form-item prop="checkPassword">
           <el-input
             prefix-icon="el-icon-view"
             type="password"
             placeholder="请再次输入密码"
-            v-model="RegisterUser.confirmPass"
+            v-model="RegisterUser.checkPassword"
           ></el-input>
         </el-form-item>
         <el-form-item>
@@ -60,12 +60,12 @@ export default {
       if (userNameRule.test(value)) {
         //判断数据库中是否已经存在该用户名
         this.$axios
-          .post("/api/user/isRegister/", {
+          .post("/api/user/isRegister", {
             account: this.RegisterUser.account
           })
           .then(res => {
             // “200”代表用户名不存在，可以注册
-            if (res.data.code == "200" || res.data.code === 200) {
+            if (res.data.code === "200" || res.data.code === 200) {
               this.$refs.ruleForm.validateField("checkPass");
               return callback();
             } else {
@@ -101,7 +101,7 @@ export default {
         return callback(new Error("请输入确认密码"));
       }
       // 校验是否以密码一致
-      if (this.RegisterUser.pass != "" && value === this.RegisterUser.pass) {
+      if (this.RegisterUser.password !== "" && value === this.RegisterUser.password) {
         this.$refs.ruleForm.validateField("checkPass");
         return callback();
       } else {
@@ -111,15 +111,15 @@ export default {
     return {
       isRegister: false, // 控制注册组件是否显示
       RegisterUser: {
-        name: "",
-        pass: "",
-        confirmPass: ""
+        account: "",
+        password: "",
+        checkPassword: ""
       },
       // 用户信息校验规则,validator(校验方法),trigger(触发方式),blur为在组件 Input 失去焦点时触发
       rules: {
-        name: [{ validator: validateName, trigger: "blur" }],
-        pass: [{ validator: validatePass, trigger: "blur" }],
-        confirmPass: [{ validator: validateConfirmPass, trigger: "blur" }]
+        account: [{ validator: validateName, trigger: "blur" }],
+        password: [{ validator: validatePass, trigger: "blur" }],
+        checkPassword: [{ validator: validateConfirmPass, trigger: "blur" }]
       }
     };
   },
