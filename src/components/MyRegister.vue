@@ -62,8 +62,8 @@ export default {
         this.$axios
           .get("/api/user/username/" + this.RegisterUser.name)
           .then(res => {
-            // “001”代表用户名不存在，可以注册
-            if (res.data.code == "001") {
+            // “200”代表用户名不存在，可以注册
+            if (res.data.code == "200" || res.data.code === 200) {
               this.$refs.ruleForm.validateField("checkPass");
               return callback();
             } else {
@@ -144,11 +144,12 @@ export default {
         if (valid) {
           this.$axios
             .post("/api/user/register", {
-              username: this.RegisterUser.name,
-              password: this.RegisterUser.pass
+              account: this.RegisterUser.name,
+              password: this.RegisterUser.pass,
+              checkPassword: this.RegisterUser.confirmPass
             })
             .then(res => {
-              // “001”代表注册成功，其他的均为失败
+              // "001"代表注册成功，其他的均为失败
               if (res.data.code === "001") {
                 // 隐藏注册组件
                 this.isRegister = false;
