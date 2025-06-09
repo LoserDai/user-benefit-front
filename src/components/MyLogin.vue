@@ -38,13 +38,13 @@ export default {
       if (!value) {
         return callback(new Error("请输入用户名"));
       }
-      // 用户名以字母开头,长度在5-16之间,只能包含字母和数字
-      const userNameRule = /^[a-zA-Z][a-zA-Z0-9]{4,15}$/;
+      // 用户名以字母开头,长度在5-17之间,只能包含字母和数字
+      const userNameRule = /^[a-zA-Z][a-zA-Z0-9]{4,16}$/;
       if (userNameRule.test(value)) {
         this.$refs.ruleForm.validateField("checkPass");
         return callback();
       } else {
-        return callback(new Error("字母开头,长度5-16之间,只能包含字母和数字"));
+        return callback(new Error("字母开头,长度5-17之间,只能包含字母和数字"));
       }
     };
     // 密码的校验方法
@@ -52,14 +52,14 @@ export default {
       if (value === "") {
         return callback(new Error("请输入密码"));
       }
-      // 密码以字母开头,长度在8-18之间,允许字母数字和下划线
-      const passwordRule = /^[a-zA-Z]\w{7,17}$/;
+      // 密码以字母开头,长度在8-18之间,允许字母数字
+      const passwordRule = /^[a-zA-Z][a-zA-Z0-9]{7,17}$/;
       if (passwordRule.test(value)) {
         this.$refs.ruleForm.validateField("checkPass");
         return callback();
       } else {
         return callback(
-          new Error("字母开头,长度8-18之间,不允许字母数字和下划线")
+          new Error("字母开头,长度8-18之间,允许字母数字")
         );
       }
     };
@@ -102,7 +102,7 @@ export default {
     if (res.data.code === 200 || res.data.code === "200") {
       this.handleLoginSuccess(res.data);
     } else {
-      this.handleLoginError(res.data.message); // 用 message 字段
+      this.handleLoginError(res.data.message); 
     }
   } catch (err) {
     this.handleLoginError("登录请求失败，请稍后重试");
@@ -111,10 +111,10 @@ export default {
   handleLoginSuccess(data) {
   this.setUser(data.data);
   this.isLogin = false;
-  this.notifySucceed(data.message); // 用 message 字段
+  this.notifySucceed(data.message); 
 },
 handleLoginError(msg) {
-  this.$refs["ruleForm"].resetFields(); // 只重置密码字段更好
+  this.$refs["ruleForm"].resetFields(); 
   this.notifyError(msg);
 }
 }

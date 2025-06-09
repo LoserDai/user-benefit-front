@@ -55,8 +55,8 @@ export default {
       if (!value) {
         return callback(new Error("请输入用户名"));
       }
-      // 用户名以字母开头,长度在5-16之间,允许字母数字下划线
-      const userNameRule = /^[a-zA-Z][a-zA-Z0-9_]{4,15}$/;
+      // 用户名以字母开头,长度在5-16之间,只能包含字母和数字
+      const userNameRule = /^[a-zA-Z][a-zA-Z0-9]{4,15}$/;
       if (userNameRule.test(value)) {
         //判断数据库中是否已经存在该用户名
         this.$axios
@@ -74,7 +74,7 @@ export default {
             return Promise.reject(err);
           });
       } else {
-        return callback(new Error("字母开头,长度5-16之间,允许字母数字下划线"));
+        return callback(new Error("字母开头,长度5-16之间,只能包含字母和数字"));
       }
     };
     // 密码的校验方法
@@ -82,14 +82,14 @@ export default {
       if (value === "") {
         return callback(new Error("请输入密码"));
       }
-      // 密码以字母开头,长度在6-18之间,允许字母数字和下划线
-      const passwordRule = /^[a-zA-Z]\w{5,17}$/;
+      // 密码以字母开头,长度在6-18之间,只能包含字母和数字
+      const passwordRule = /^[a-zA-Z][a-zA-Z0-9]{5,17}$/;
       if (passwordRule.test(value)) {
         this.$refs.ruleForm.validateField("checkPass");
         return callback();
       } else {
         return callback(
-          new Error("字母开头,长度6-18之间,允许字母数字和下划线")
+          new Error("字母开头,长度6-18之间,只能包含字母和数字")
         );
       }
     };
