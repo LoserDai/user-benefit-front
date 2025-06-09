@@ -60,7 +60,9 @@ export default {
       if (userNameRule.test(value)) {
         //判断数据库中是否已经存在该用户名
         this.$axios
-          .get("/api/user/username/" + this.RegisterUser.name)
+          .post("/api/user/isRegister/", {
+            account: this.RegisterUser.name
+          })
           .then(res => {
             // “200”代表用户名不存在，可以注册
             if (res.data.code == "200" || res.data.code === 200) {
@@ -149,15 +151,15 @@ export default {
               checkPassword: this.RegisterUser.confirmPass
             })
             .then(res => {
-              // "001"代表注册成功，其他的均为失败
-              if (res.data.code === "001") {
+              // "200"代表注册成功，其他的均为失败
+              if (res.data.code === "200" || res.data.code === 200) {
                 // 隐藏注册组件
                 this.isRegister = false;
                 // 弹出通知框提示注册成功信息
-                this.notifySucceed(res.data.msg);
+                this.notifySucceed(res.data.message);
               } else {
                 // 弹出通知框提示注册失败信息
-                this.notifyError(res.data.msg);
+                this.notifyError(res.data.message);
               }
             })
             .catch(err => {
