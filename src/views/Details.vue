@@ -157,7 +157,7 @@ export default {
         .post("/api/cart/product/user/" + this.productID + "/" + this.$store.getters.getUser.userId)
         .then(res => {
           switch (res.data.code) {
-            case "001":
+            case "200":
               // 新加入购物车成功
               this.unshiftShoppingCart(res.data.data);
               this.notifySucceed(res.data.msg);
@@ -189,7 +189,7 @@ export default {
       this.$axios
         .post("/api/collect/user/" + this.productID + "/" + this.$store.getters.getUser.userId)
         .then(res => {
-          if (res.data.code == "001") {
+          if (res.data.code == "200") {
             // 添加收藏成功
             this.notifySucceed(res.data.msg);
           } else {

@@ -144,7 +144,7 @@ export default {
       this.$axios
         .get("/api/user/token")
         .then(res => {
-          if (res.data.code === "001") {
+          if (res.data.code === "200") {
             // 001 为成功
             this.setUser(res.data.data);
           }
@@ -183,7 +183,7 @@ export default {
         this.$axios
           .get("/api/cart/user/" + val.userId)
           .then(res => {
-            if (res.data.code === "001") {
+            if (res.data.code === "200") {
               // 001 为成功, 更新vuex购物车状态
               this.setShoppingCart(res.data.data);
             } else {

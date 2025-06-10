@@ -164,7 +164,7 @@ export default {
           let products = this.getCheckGoods;
           switch (res.data.code) {
             // “001”代表结算成功
-            case "001":
+            case "200":
               for (let i = 0; i < products.length; i++) {
                 const temp = products[i];
                 // 删除已经结算的购物车商品

@@ -68,7 +68,7 @@ export default {
         .delete("/api/collect/user/" + product_id + "/" + this.$store.getters.getUser.userId)
         .then(res => {
           switch (res.data.code) {
-            case "001":
+            case "200":
               // 删除成功
               // 删除删除列表中的该商品信息
               for (let i = 0; i < this.list.length; i++) {

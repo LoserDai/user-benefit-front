@@ -41,7 +41,7 @@ export default {
     this.$axios
       .get("/api/collect/user/" + this.$store.getters.getUser.userId)
       .then(res => {
-        if (res.data.code === "001") {
+        if (res.data.code === "200") {
           this.collectList = res.data.data;
         }
       })

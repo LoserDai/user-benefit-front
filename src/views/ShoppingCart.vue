@@ -136,7 +136,7 @@ export default {
         .put("/api/cart/user/num/" + cartId + "/" + this.$store.getters.getUser.userId + "/" + currentValue)
         .then(res => {
           switch (res.data.code) {
-            case "001":
+            case "200":
               // “001”代表更新成功
               // 更新vuex状态
               this.updateShoppingCart({
@@ -166,7 +166,7 @@ export default {
         .delete("/api/cart/user/" + cartId + "/" + this.$store.getters.getUser.userId)
         .then(res => {
           switch (res.data.code) {
-            case "001":
+            case "200":
               // “001” 删除成功
               // 更新vuex状态
               this.deleteShoppingCart(cartId);

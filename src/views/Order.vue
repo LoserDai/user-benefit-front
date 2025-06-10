@@ -96,7 +96,7 @@ export default {
     this.$axios
       .get("/api/order")
       .then(res => {
-        if (res.data.code === "001") {
+        if (res.data.code === "200") {
           this.orders = res.data.data;
         } else {
           this.notifyError(res.data.msg);
